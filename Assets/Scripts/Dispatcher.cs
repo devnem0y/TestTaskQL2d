@@ -15,6 +15,9 @@ public class Dispatcher
     public static event Action OnScoreAdd;
     public static event Action OnBrickDestroy;
     public static event Action OnSetCountBall;
+    public static event Action OnSetupParam;
+    
+    public static event Action<object> OnComplexityChange;
 
     #endregion
 
@@ -35,6 +38,7 @@ public class Dispatcher
             case Event.ON_GENERATION_DONE: return OnGenerationDone;
             case Event.ON_BRICK_DESTROY: return OnBrickDestroy;
             case Event.ON_SET_COUNT_BALL: return OnSetCountBall;
+            case Event.ON_SETUP_PARAM: return OnSetupParam;
 
             default: throw new ArgumentOutOfRangeException(nameof(e), e, null);
         }
@@ -48,7 +52,7 @@ public class Dispatcher
     {
         switch (e)
         {
-            
+            case Event.ON_COMPLEXITY_CHANGE: return OnComplexityChange;
 
             default: throw new ArgumentOutOfRangeException(nameof(e), e, null);
         }
@@ -119,4 +123,7 @@ public enum Event
 
     ON_GENERATION_DONE,
     ON_BRICK_DESTROY,
+    
+    ON_COMPLEXITY_CHANGE,
+    ON_SETUP_PARAM,
 }

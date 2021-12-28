@@ -5,8 +5,8 @@ public class GameData : MonoBehaviour
 {
     public static GameData instance;
 
-    private int _complexitySelectId;
-    private List<СomplexityData> _сomplexityDatas;
+    private int _complexitySelectId = 1;
+    [SerializeField] private List<СomplexityData> _сomplexityDatas;
     public СomplexityData СomplexityData => _сomplexityDatas[_complexitySelectId];
 
     private SessionState _sessionState;
@@ -39,6 +39,7 @@ public class GameData : MonoBehaviour
         Dispatcher.OnBrickDestroy += OnChangeBricks;
         Dispatcher.OnScoreAdd += OnScoreAdd;
         Dispatcher.OnFailing += OnFailing;
+        Dispatcher.OnComplexityChange += OnComplexityChange;
         _sessionState = SessionState.MENU;
     }
 
@@ -46,6 +47,7 @@ public class GameData : MonoBehaviour
     {
         _spawner.Generation();
         _sessionState = SessionState.GAME;
+        Dispatcher.Send(Event.ON_SET_COUNT_BALL);
         Time.timeScale = 1;
     }
 
@@ -105,6 +107,12 @@ public class GameData : MonoBehaviour
             Dispatcher.Send(Event.ON_LOSE);
         }
     }
+    
+    private void OnComplexityChange(object arg)
+    {
+        _complexitySelectId = (int) arg;
+        Dispatcher.Send(Event.ON_SETUP_PARAM);
+    }
 
     private void OnDestroy()
     {
@@ -114,5 +122,6 @@ public class GameData : MonoBehaviour
         Dispatcher.OnBrickDestroy -= OnChangeBricks;
         Dispatcher.OnScoreAdd -= OnScoreAdd;
         Dispatcher.OnFailing -= OnFailing;
+        Dispatcher.OnComplexityChange -= OnComplexityChange;
     }
 }

@@ -16,17 +16,8 @@ public class Platform : MonoBehaviour
         _mainCamera = FindObjectOfType<Camera>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
-    }
-
-    private void Start()
-    {
-        var sizeX = GameData.instance.СomplexityData.PlatformWidth;
-        _spriteRenderer.size = new Vector2(sizeX, _spriteRenderer.size.y);
-        _boxCollider2D.size = new Vector2(sizeX, _boxCollider2D.size.y);
         
-        var platformShift = (defaultPlatformWidthInPixels - ((defaultPlatformWidthInPixels / 2) * _spriteRenderer.size.x)) / 2;
-        leftClamp = defaultLeftClamp - platformShift;
-        rightClamp = defaultRightClamp + platformShift;
+        Dispatcher.OnSetupParam += OnSetupParam;
     }
 
     private void Update()
@@ -42,5 +33,21 @@ public class Platform : MonoBehaviour
         var mousePositionPixels = Mathf.Clamp(Input.mousePosition.x, leftClamp, rightClamp);
         var mousePositionWorldX = _mainCamera.ScreenToWorldPoint(new Vector2(mousePositionPixels, 0)).x;
         transform.position = new Vector2(mousePositionWorldX, transform.position.y);
+    }
+
+    private void OnSetupParam()
+    {
+        var sizeX = GameData.instance.СomplexityData.PlatformWidth;
+        _spriteRenderer.size = new Vector2(sizeX, _spriteRenderer.size.y);
+        _boxCollider2D.size = new Vector2(sizeX, _boxCollider2D.size.y);
+        
+        var platformShift = (defaultPlatformWidthInPixels - ((defaultPlatformWidthInPixels / 2) * _spriteRenderer.size.x)) / 2;
+        leftClamp = defaultLeftClamp - platformShift;
+        rightClamp = defaultRightClamp + platformShift;
+    }
+    
+    private void OnDestroy()
+    {
+        Dispatcher.OnSetupParam -= OnSetupParam;
     }
 }

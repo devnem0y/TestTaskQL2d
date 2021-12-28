@@ -1094,6 +1094,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fff5a6783ff5443829b7ca81786f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "_\u0441omplexityDatas":
+  - {fileID: 11400000, guid: d601d78b9219e634fa566e6583741407, type: 2}
+  - {fileID: 11400000, guid: d6dc6525de854e246b52a693687c186f, type: 2}
+  - {fileID: 11400000, guid: c3ec359f191c1244ab4730ba0dcb10b9, type: 2}
 --- !u!4 &616509591
 Transform:
   m_ObjectHideFlags: 0
@@ -3104,10 +3108,13 @@ MonoBehaviour:
   _btnRestartL: {fileID: 1525270190}
   _btnNextLevel: {fileID: 586373540}
   _btnAdvertisement: {fileID: 1229377939}
+  "_btn\u0421omplexityLeft": {fileID: 947372638}
+  "_btn\u0421omplexityRight": {fileID: 1597994972}
   _scoreHUD: {fileID: 967040952}
   _scoreWin: {fileID: 1289685918}
   _scoreLose: {fileID: 1563046190}
   _countBall: {fileID: 552711140}
+  _complexityLabel: {fileID: 1373098250}
 --- !u!1 &1373098248
 GameObject:
   m_ObjectHideFlags: 0

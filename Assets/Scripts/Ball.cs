@@ -12,9 +12,11 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        
+        Dispatcher.OnSetupParam += OnSetupParam;
     }
 
-    private void Start()
+    private void OnSetupParam()
     {
         _force = GameData.instance.СomplexityData.BallForce;
     }
@@ -77,5 +79,10 @@ public class Ball : MonoBehaviour
         _rigidbody.isKinematic = true;
         _rigidbody.bodyType = RigidbodyType2D.Kinematic;
         transform.position = new Vector2(point.position.x, point.position.y + 0.43f);
+    }
+
+    private void OnDestroy()
+    {
+        Dispatcher.OnSetupParam -= OnSetupParam;
     }
 }

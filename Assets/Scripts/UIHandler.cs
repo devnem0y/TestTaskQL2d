@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,24 +9,31 @@ public class UIHandler : MonoBehaviour
     [SerializeField] private GameObject _panelWin;
     [SerializeField] private GameObject _panelLose;
     [SerializeField] private GameObject _panelHUD;
-    
+
     [SerializeField] private Button _btnPlay;
     [SerializeField] private Button _btnOptions;
     [SerializeField] private Button _btnExit;
-    
+
     [SerializeField] private Button _btnBackToMenuO;
     [SerializeField] private Button _btnBackToMenuW;
     [SerializeField] private Button _btnBackToMenuL;
-    
+
     [SerializeField] private Button _btnRestartW;
     [SerializeField] private Button _btnRestartL;
     [SerializeField] private Button _btnNextLevel;
     [SerializeField] private Button _btnAdvertisement;
-    
+
+    [SerializeField] private Button _btnСomplexityLeft;
+    [SerializeField] private Button _btnСomplexityRight;
+
     [SerializeField] private Text _scoreHUD;
     [SerializeField] private Text _scoreWin;
     [SerializeField] private Text _scoreLose;
     [SerializeField] private Text _countBall;
+
+    [SerializeField] private Text _complexityLabel;
+    private string[] complexityLabels = {"EASY", "NORMAL", "HARD"};
+    private int complexityCurrentIndex = 1;
 
     private void Awake()
     {
@@ -39,11 +47,18 @@ public class UIHandler : MonoBehaviour
         _btnBackToMenuO.onClick.AddListener(OnBackToMenu);
         _btnBackToMenuW.onClick.AddListener(OnBackToMenu);
         _btnBackToMenuL.onClick.AddListener(OnBackToMenu);
+        _btnСomplexityLeft.onClick.AddListener(OnСomplexityLeft);
+        _btnСomplexityRight.onClick.AddListener(OnСomplexityRight);
         
         Dispatcher.OnBrickDestroy += OnScoreAdd;
         Dispatcher.OnSetCountBall += OnSetCountBall;
         Dispatcher.OnWin += OnWin;
         Dispatcher.OnLose += OnLose;
+    }
+
+    private void Start()
+    {
+        SetСomplexity();
     }
 
     private void OnPlay()
@@ -122,6 +137,26 @@ public class UIHandler : MonoBehaviour
     private void SetTextScore(Text t)
     {
         t.text = $"SCORE: {GameData.instance.Score}";
+    }
+    
+    private void OnСomplexityLeft()
+    {
+        complexityCurrentIndex--;
+        SetСomplexity();
+    }
+    
+    private void OnСomplexityRight()
+    {
+        complexityCurrentIndex++;
+        SetСomplexity();
+    }
+
+    private void SetСomplexity()
+    {
+        _complexityLabel.text = complexityLabels[complexityCurrentIndex];
+        Dispatcher.Send(Event.ON_COMPLEXITY_CHANGE, complexityCurrentIndex);
+        _btnСomplexityLeft.interactable = complexityCurrentIndex != 0;
+        _btnСomplexityRight.interactable = complexityCurrentIndex != complexityLabels.Length;
     }
 
     private void OnDestroy()
