@@ -5,7 +5,7 @@ public class Ball : MonoBehaviour
     public Transform point;
     private Rigidbody2D _rigidbody;
     public float force;
-    private bool isMove = false;
+    private bool _isMove;
 
     private void Awake()
     {
@@ -17,14 +17,14 @@ public class Ball : MonoBehaviour
         switch (GameData.instance.SessionState)
         {
             case SessionState.GAME:
-                if (isMove) return;
+                if (_isMove) return;
                 transform.position = new Vector2(point.position.x, point.position.y + 0.43f);
 
                 if (Input.GetMouseButtonDown(0))
                 {
                     _rigidbody.isKinematic = false;
                     _rigidbody.AddForce(new Vector2(0f, force));
-                    isMove = true;
+                    _isMove = true;
                 }
                 break;
             case SessionState.WIN:
@@ -40,6 +40,7 @@ public class Ball : MonoBehaviour
         if (other.transform.CompareTag("Ground"))
         {
             Reboot();
+            Dispatcher.Send(Event.ON_FAILING);
         }
     }
 
@@ -65,7 +66,7 @@ public class Ball : MonoBehaviour
 
     private void Reboot()
     {
-        isMove = false;
+        _isMove = false;
         _rigidbody.isKinematic = true;
         _rigidbody.bodyType = RigidbodyType2D.Kinematic;
         transform.position = new Vector2(point.position.x, point.position.y + 0.43f);

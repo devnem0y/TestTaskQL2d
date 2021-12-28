@@ -1,5 +1,3 @@
-using System;
-using UnityEditor;
 using UnityEngine;
 
 public class GameData : MonoBehaviour
@@ -12,6 +10,8 @@ public class GameData : MonoBehaviour
     private Spawner _spawner;
 
     private int _countBall = 3;
+    public int CountBall => _countBall;
+
     private int _score = 0;
     public int Score => _score;
 
@@ -31,9 +31,9 @@ public class GameData : MonoBehaviour
         Dispatcher.OnStart += OnStart;
         Dispatcher.OnRestart += OnRestart;
         Dispatcher.OnNextLevel += OnNextLevel;
-        Dispatcher.OnLose += OnLose;
         Dispatcher.OnBrickDestroy += OnChangeBricks;
         Dispatcher.OnScoreAdd += OnScoreAdd;
+        Dispatcher.OnFailing += OnFailing;
         _sessionState = SessionState.MENU;
     }
 
@@ -53,12 +53,8 @@ public class GameData : MonoBehaviour
     
     private void OnNextLevel()
     {
+        _countBall = 3;
         OnStart();
-    }
-
-    private void OnLose()
-    {
-        _sessionState = SessionState.LOSE;
     }
 
     private void OnChangeBricks()
@@ -75,7 +71,7 @@ public class GameData : MonoBehaviour
         _score++;
     }
 
-        private void Update()
+    private void Update()
     {
         if (!Input.GetKeyUp(KeyCode.Escape)) return;
         
@@ -92,13 +88,26 @@ public class GameData : MonoBehaviour
         }
     }
 
+    private void OnFailing()
+    {
+        _countBall--;
+        Dispatcher.Send(Event.ON_SET_COUNT_BALL);
+
+        if (_countBall == 0)
+        {
+            Time.timeScale = 0;
+            _sessionState = SessionState.LOSE;
+            Dispatcher.Send(Event.ON_LOSE);
+        }
+    }
+
     private void OnDestroy()
     {
         Dispatcher.OnStart -= OnStart;
         Dispatcher.OnRestart -= OnRestart;
         Dispatcher.OnNextLevel -= OnNextLevel;
-        Dispatcher.OnLose -= OnLose;
         Dispatcher.OnBrickDestroy -= OnChangeBricks;
         Dispatcher.OnScoreAdd -= OnScoreAdd;
+        Dispatcher.OnFailing -= OnFailing;
     }
 }

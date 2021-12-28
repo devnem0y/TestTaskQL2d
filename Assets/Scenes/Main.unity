@@ -834,8 +834,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 174, y: -105}
-  m_SizeDelta: {x: 300, y: 85}
+  m_AnchoredPosition: {x: 221.29999, y: -105}
+  m_SizeDelta: {x: 395, y: 85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &552711140
 MonoBehaviour:
@@ -3100,7 +3100,14 @@ MonoBehaviour:
   _btnBackToMenuO: {fileID: 260824129}
   _btnBackToMenuW: {fileID: 1002169784}
   _btnBackToMenuL: {fileID: 1925007135}
+  _btnRestartW: {fileID: 833199910}
+  _btnRestartL: {fileID: 1525270190}
+  _btnNextLevel: {fileID: 586373540}
+  _btnAdvertisement: {fileID: 1229377939}
   _scoreHUD: {fileID: 967040952}
+  _scoreWin: {fileID: 1289685918}
+  _scoreLose: {fileID: 1563046190}
+  _countBall: {fileID: 552711140}
 --- !u!1 &1373098248
 GameObject:
   m_ObjectHideFlags: 0
