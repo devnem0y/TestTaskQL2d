@@ -5,11 +5,12 @@ public class Spawner : MonoBehaviour
 {
     private const float ELEMENT_WIDTH = 1.76f;
     private const float ELEMENT_HEIGHT = 0.52f;
-    private const int GRID_SIZE = 3;
     private const float OFFSET = 1.5f;
 
     [SerializeField] private GameObject _element;
     [SerializeField] private Transform _wrapper;
+    
+    private int _gridSize;
 
     private List<int> _bricks;
     public List<int> Bricks => _bricks;
@@ -21,17 +22,18 @@ public class Spawner : MonoBehaviour
 
     public void Generation()
     {
+        _gridSize = GameData.instance.СomplexityData.BricksSize;
         var brickId = 0;
         _bricks = new List<int>();
         
-        float gridWidth = GRID_SIZE * ELEMENT_WIDTH;
-        float gridHeight = GRID_SIZE * ELEMENT_HEIGHT;
+        float gridWidth = _gridSize * ELEMENT_WIDTH;
+        float gridHeight = _gridSize * ELEMENT_HEIGHT;
         float minX = -gridWidth / 2 + ELEMENT_WIDTH / 2;
         float maxY = gridHeight / 2 - ELEMENT_HEIGHT / 2 + OFFSET;
 
-        var gridSizeX = GRID_SIZE;
+        var gridSizeX = _gridSize;
 
-        for (var y = 0; y < GRID_SIZE; y++)
+        for (var y = 0; y < _gridSize; y++)
         {
             for (var x = 0; x < gridSizeX; x++)
             {

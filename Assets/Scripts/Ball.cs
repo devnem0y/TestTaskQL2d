@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public Transform point;
+    private const int SPEED = 220;
+    
+    [SerializeField] private Transform point;
     private Rigidbody2D _rigidbody;
-    public float force;
+    private float _force;
     private bool _isMove;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
+        _force = GameData.instance.СomplexityData.BallForce;
     }
 
     private void Update()
@@ -23,7 +30,7 @@ public class Ball : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     _rigidbody.isKinematic = false;
-                    _rigidbody.AddForce(new Vector2(0f, force));
+                    _rigidbody.AddForce(new Vector2(0f, _force));
                     _isMove = true;
                 }
                 break;
@@ -55,11 +62,11 @@ public class Ball : MonoBehaviour
             float difference = platformCenter.x - hitPoint.x;
             if (hitPoint.x < platformCenter.x)
             {
-                _rigidbody.AddForce(new Vector2(-Mathf.Abs(difference * 400), force));
+                _rigidbody.AddForce(new Vector2(-Mathf.Abs(difference * _force - SPEED), _force));
             }
             else
             {
-                _rigidbody.AddForce(new Vector2(Mathf.Abs(difference * 400), force));
+                _rigidbody.AddForce(new Vector2(Mathf.Abs(difference * _force - SPEED), _force));
             }
         }
     }

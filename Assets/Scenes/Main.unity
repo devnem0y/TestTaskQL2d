@@ -4855,7 +4855,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 822319288}
-  force: 620
 --- !u!1 &1970035897
 GameObject:
   m_ObjectHideFlags: 0

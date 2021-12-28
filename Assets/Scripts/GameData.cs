@@ -1,9 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
     public static GameData instance;
-    
+
+    private int _complexitySelectId;
+    private List<СomplexityData> _сomplexityDatas;
+    public СomplexityData СomplexityData => _сomplexityDatas[_complexitySelectId];
+
     private SessionState _sessionState;
     public SessionState SessionState => _sessionState;
 
