@@ -13,6 +13,7 @@ public class Dispatcher
     public static event Action OnGenerationDone;
     public static event Action OnFailing;
     public static event Action OnScoreAdd;
+    public static event Action OnBrickDestroy;
 
     #endregion
 
@@ -31,6 +32,7 @@ public class Dispatcher
             case Event.ON_FAILING: return OnFailing;
             case Event.ON_SCORE_ADD: return OnScoreAdd;
             case Event.ON_GENERATION_DONE: return OnGenerationDone;
+            case Event.ON_BRICK_DESTROY: return OnBrickDestroy;
 
             default: throw new ArgumentOutOfRangeException(nameof(e), e, null);
         }
@@ -113,4 +115,5 @@ public enum Event
     ON_SCORE_ADD,
 
     ON_GENERATION_DONE,
+    ON_BRICK_DESTROY,
 }

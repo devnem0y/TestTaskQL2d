@@ -25,7 +25,10 @@ public class Platform : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        if (GameData.instance.SessionState == SessionState.GAME)
+        {
+            Movement();
+        }
     }
 
     private void Movement()

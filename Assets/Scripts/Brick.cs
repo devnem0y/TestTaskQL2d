@@ -6,6 +6,8 @@ public class Brick : MonoBehaviour
     {
         if (other.transform.CompareTag("Ball"))
         {
+            Dispatcher.Send(Event.ON_SCORE_ADD);
+            Dispatcher.Send(Event.ON_BRICK_DESTROY);
             Destroy(gameObject);
         }
     }
