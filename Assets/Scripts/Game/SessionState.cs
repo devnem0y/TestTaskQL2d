@@ -5,5 +5,4 @@ public enum SessionState
     MENU,
     WIN,
     LOSE,
-    FAILING,
 }

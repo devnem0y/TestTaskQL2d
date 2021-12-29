@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
 
     public void Generation()
     {
-        RemoveBrickAll(_wrapper);
+        Clear(_wrapper);
         
         _gridSize = GameData.instance.СomplexityData.BricksSize;
         var brickId = 0;
@@ -55,7 +55,7 @@ public class Spawner : MonoBehaviour
         _bricks.RemoveAt(_bricks.Count - 1);
     }
     
-    private void RemoveBrickAll(Transform wrapper)
+    private void Clear(Transform wrapper)
     {
         while (wrapper.childCount > 0) 
         {

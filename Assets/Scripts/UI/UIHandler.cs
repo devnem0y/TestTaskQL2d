@@ -30,8 +30,8 @@ public class UIHandler : MonoBehaviour
 
     private void OnPlay()
     {
-        _panelHUD.Show();
         Dispatcher.Send(Event.ON_START);
+        _panelHUD.Show();
     }
     
     private void OnOptions()
@@ -58,14 +58,14 @@ public class UIHandler : MonoBehaviour
 
     private void OnRestart()
     {
-        _panelHUD.Show();
         Dispatcher.Send(Event.ON_RESTART);
+        _panelHUD.Show();
     }
 
     private void OnNextLevel()
     {
-        _panelHUD.Show();
         Dispatcher.Send(Event.ON_NEXT_LEVEL);
+        _panelHUD.Show();
     }
 
     private void OnDestroy()

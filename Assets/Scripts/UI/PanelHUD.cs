@@ -8,7 +8,7 @@ public class PanelHUD : Widget
 
     private void Awake()
     {
-        Dispatcher.OnBrickDestroy += OnScoreAdd;
+        Dispatcher.OnScoreAdd += OnScoreAdd;
         Dispatcher.OnSetCountBall += OnSetCountBall;
     }
     
@@ -31,7 +31,7 @@ public class PanelHUD : Widget
 
     private void OnDestroy()
     {
-        Dispatcher.OnBrickDestroy -= OnScoreAdd;
+        Dispatcher.OnScoreAdd -= OnScoreAdd;
         Dispatcher.OnSetCountBall -= OnSetCountBall;
     }
 }

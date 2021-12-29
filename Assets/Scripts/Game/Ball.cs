@@ -59,7 +59,7 @@ public class Ball : MonoBehaviour
         if (other.transform.CompareTag("Platform"))
         {
             var hitPoint = other.contacts[0].point;
-            var platformCenter = new Vector3(point.position.x, point.position.y);
+            var platformCenter = new Vector2(point.position.x, point.position.y);
             _rigidbody.velocity = Vector2.zero;
 
             float difference = platformCenter.x - hitPoint.x;

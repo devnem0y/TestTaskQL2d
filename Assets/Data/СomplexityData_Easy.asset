@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c0a449c766afb468506a4c3d99541a, type: 3}
   m_Name: "\u0421omplexityData_Easy"
   m_EditorClassIdentifier: 
-  _platformWidth: 4
-  _ballForce: 500
+  _platformWidth: 3.5
+  _ballForce: 570
   _bricksSize: 3

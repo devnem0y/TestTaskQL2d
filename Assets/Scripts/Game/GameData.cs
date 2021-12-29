@@ -35,9 +35,8 @@ public class GameData : MonoBehaviour
         
         Dispatcher.OnStart += OnStart;
         Dispatcher.OnRestart += OnRestart;
-        Dispatcher.OnNextLevel += OnNextLevel;
+        Dispatcher.OnNextLevel += OnStart;
         Dispatcher.OnBrickDestroy += OnChangeBricks;
-        Dispatcher.OnScoreAdd += OnScoreAdd;
         Dispatcher.OnFailing += OnFailing;
         Dispatcher.OnComplexityChange += OnComplexityChange;
         _sessionState = SessionState.MENU;
@@ -54,46 +53,20 @@ public class GameData : MonoBehaviour
 
     private void OnRestart()
     {
-        _countBall = 3;
         _score = 0;
-        OnStart();
-    }
-    
-    private void OnNextLevel()
-    {
-        _countBall = 3;
         OnStart();
     }
 
     private void OnChangeBricks()
     {
+        _score++;
+        Dispatcher.Send(Event.ON_SCORE_ADD);
+        
         if (_spawner.Bricks.Count > 0) return;
         
         Time.timeScale = 0;
         _sessionState = SessionState.WIN;
         Dispatcher.Send(Event.ON_WIN);
-    }
-
-    private void OnScoreAdd()
-    {
-        _score++;
-    }
-
-    private void Update()
-    {
-        if (!Input.GetKeyUp(KeyCode.Escape)) return;
-        
-        switch (_sessionState)
-        {
-            case SessionState.GAME:
-                Time.timeScale = 0;
-                _sessionState = SessionState.PAUSE;
-                break;
-            case SessionState.PAUSE:
-                Time.timeScale = 1;
-                _sessionState = SessionState.GAME;
-                break;
-        }
     }
 
     private void OnFailing()
@@ -114,14 +87,30 @@ public class GameData : MonoBehaviour
         _complexitySelectId = (int) arg;
         Dispatcher.Send(Event.ON_SETUP_PARAM);
     }
+    
+    private void Update()
+    {
+        if (!Input.GetKeyUp(KeyCode.Escape)) return;
+        
+        switch (_sessionState)
+        {
+            case SessionState.GAME:
+                Time.timeScale = 0;
+                _sessionState = SessionState.PAUSE;
+                break;
+            case SessionState.PAUSE:
+                Time.timeScale = 1;
+                _sessionState = SessionState.GAME;
+                break;
+        }
+    }
 
     private void OnDestroy()
     {
         Dispatcher.OnStart -= OnStart;
         Dispatcher.OnRestart -= OnRestart;
-        Dispatcher.OnNextLevel -= OnNextLevel;
+        Dispatcher.OnNextLevel -= OnRestart;
         Dispatcher.OnBrickDestroy -= OnChangeBricks;
-        Dispatcher.OnScoreAdd -= OnScoreAdd;
         Dispatcher.OnFailing -= OnFailing;
         Dispatcher.OnComplexityChange -= OnComplexityChange;
     }

@@ -5,12 +5,10 @@ public class Dispatcher
     #region Events
     
     public static event Action OnStart;
-    public static event Action OnPause;
     public static event Action OnRestart;
     public static event Action OnWin;
     public static event Action OnLose;
     public static event Action OnNextLevel;
-    public static event Action OnGenerationDone;
     public static event Action OnFailing;
     public static event Action OnScoreAdd;
     public static event Action OnBrickDestroy;
@@ -28,14 +26,12 @@ public class Dispatcher
         switch (e)
         {
             case Event.ON_START: return OnStart;
-            case Event.ON_PAUSE: return OnPause;
             case Event.ON_RESTART: return OnRestart;
             case Event.ON_WIN: return OnWin;
             case Event.ON_LOSE: return OnLose;
             case Event.ON_NEXT_LEVEL: return OnNextLevel;
             case Event.ON_FAILING: return OnFailing;
             case Event.ON_SCORE_ADD: return OnScoreAdd;
-            case Event.ON_GENERATION_DONE: return OnGenerationDone;
             case Event.ON_BRICK_DESTROY: return OnBrickDestroy;
             case Event.ON_SET_COUNT_BALL: return OnSetCountBall;
             case Event.ON_SETUP_PARAM: return OnSetupParam;
@@ -112,7 +108,6 @@ public class Dispatcher
 public enum Event
 {
     ON_START,
-    ON_PAUSE,
     ON_RESTART,
     ON_NEXT_LEVEL,
     ON_WIN,
@@ -120,10 +115,7 @@ public enum Event
     ON_FAILING,
     ON_SCORE_ADD,
     ON_SET_COUNT_BALL,
-
-    ON_GENERATION_DONE,
     ON_BRICK_DESTROY,
-    
     ON_COMPLEXITY_CHANGE,
     ON_SETUP_PARAM,
 }
