@@ -34,6 +34,7 @@ public class Ball : MonoBehaviour
                     _rigidbody.isKinematic = false;
                     _rigidbody.AddForce(new Vector2(0f, _force));
                     _isMove = true;
+                    AudioManager.instance.PlaySound("fx_1");
                 }
                 break;
             case SessionState.WIN:
@@ -70,6 +71,8 @@ public class Ball : MonoBehaviour
             {
                 _rigidbody.AddForce(new Vector2(Mathf.Abs(difference * _force - SPEED), _force));
             }
+            
+            AudioManager.instance.PlaySound("fx_2");
         }
     }
 

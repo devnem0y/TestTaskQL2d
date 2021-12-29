@@ -63,6 +63,7 @@ public class UIHandler : MonoBehaviour
 
     private void OnPlay()
     {
+        AudioManager.instance.PlaySound("button_click");
         _panelMenu.SetActive(false);
         _panelHUD.SetActive(true);
         Dispatcher.Send(Event.ON_START);
@@ -70,17 +71,20 @@ public class UIHandler : MonoBehaviour
     
     private void OnOptions()
     {
+        AudioManager.instance.PlaySound("button_click");
         _panelMenu.SetActive(false);
         _panelOptions.SetActive(true);
     }
     
     private void OnExit()
     {
+        AudioManager.instance.PlaySound("button_click");
         Application.Quit();
     }
     
     private void OnBackToMenu()
     {
+        AudioManager.instance.PlaySound("button_click");
         _panelOptions.SetActive(false);
         _panelWin.SetActive(false);
         _panelLose.SetActive(false);
@@ -113,11 +117,13 @@ public class UIHandler : MonoBehaviour
 
     private void OnAdvertisement()
     {
+        AudioManager.instance.PlaySound("button_click");
         // Реклама
     }
 
     private void OnRestart()
     {
+        AudioManager.instance.PlaySound("button_click");
         _panelWin.SetActive(false);
         _panelLose.SetActive(false);
         _panelHUD.SetActive(true);
@@ -128,6 +134,7 @@ public class UIHandler : MonoBehaviour
 
     private void OnNextLevel()
     {
+        AudioManager.instance.PlaySound("button_click");
         _panelWin.SetActive(false);
         _panelHUD.SetActive(true);
         OnSetCountBall();
@@ -141,12 +148,14 @@ public class UIHandler : MonoBehaviour
     
     private void OnСomplexityLeft()
     {
+        AudioManager.instance.PlaySound("button_click");
         complexityCurrentIndex--;
         SetСomplexity();
     }
     
     private void OnСomplexityRight()
     {
+        AudioManager.instance.PlaySound("button_click");
         complexityCurrentIndex++;
         SetСomplexity();
     }
