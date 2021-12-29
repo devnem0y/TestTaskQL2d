@@ -14,10 +14,10 @@ public class GameData : MonoBehaviour
 
     private Spawner _spawner;
 
-    private int _countBall = 3;
+    private int _countBall;
     public int CountBall => _countBall;
 
-    private int _score = 0;
+    private int _score;
     public int Score => _score;
 
     private void Awake()
@@ -47,6 +47,7 @@ public class GameData : MonoBehaviour
     {
         _spawner.Generation();
         _sessionState = SessionState.GAME;
+        _countBall = 3;
         Dispatcher.Send(Event.ON_SET_COUNT_BALL);
         Time.timeScale = 1;
     }

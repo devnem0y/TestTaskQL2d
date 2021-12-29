@@ -16,7 +16,7 @@ public class Dispatcher
     public static event Action OnBrickDestroy;
     public static event Action OnSetCountBall;
     public static event Action OnSetupParam;
-    
+
     public static event Action<object> OnComplexityChange;
 
     #endregion

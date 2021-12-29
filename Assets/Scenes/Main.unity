@@ -399,6 +399,7 @@ GameObject:
   - component: {fileID: 286542050}
   - component: {fileID: 286542052}
   - component: {fileID: 286542051}
+  - component: {fileID: 286542053}
   m_Layer: 5
   m_Name: PanelLose
   m_TagString: Untagged
@@ -466,6 +467,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286542049}
   m_CullTransparentMesh: 1
+--- !u!114 &286542053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286542049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b6eee2b40ce00438f99035ec9591f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: {fileID: 1563046190}
+  _btnBackToMenu: {fileID: 1925007135}
+  _btnRestart: {fileID: 1525270190}
+  _btnAdvertisement: {fileID: 1229377939}
 --- !u!1 &299942016
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +669,7 @@ GameObject:
   - component: {fileID: 333863331}
   - component: {fileID: 333863333}
   - component: {fileID: 333863332}
+  - component: {fileID: 333863334}
   m_Layer: 5
   m_Name: PanelMenu
   m_TagString: Untagged
@@ -717,6 +735,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333863330}
   m_CullTransparentMesh: 1
+--- !u!114 &333863334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333863330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42d57ea49f73eb4ea0012bb12cdb140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _btnPlay: {fileID: 1623951091}
+  _btnOptions: {fileID: 1797326057}
+  _btnExit: {fileID: 1293885179}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,6 +2010,7 @@ GameObject:
   - component: {fileID: 976925539}
   - component: {fileID: 976925541}
   - component: {fileID: 976925540}
+  - component: {fileID: 976925542}
   m_Layer: 5
   m_Name: PanelWin
   m_TagString: Untagged
@@ -2044,6 +2078,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976925538}
   m_CullTransparentMesh: 1
+--- !u!114 &976925542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976925538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19b1ac24700cd144a94de28515fe5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: {fileID: 1289685918}
+  _btnBackToMenu: {fileID: 1002169784}
+  _btnRestart: {fileID: 833199910}
+  _btnNextLevel: {fileID: 586373540}
 --- !u!1 &1002169782
 GameObject:
   m_ObjectHideFlags: 0
@@ -3163,28 +3213,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66846f854fbca6409597e2a593e6027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _panelMenu: {fileID: 333863330}
-  _panelOptions: {fileID: 1558713002}
-  _panelWin: {fileID: 976925538}
-  _panelLose: {fileID: 286542049}
-  _panelHUD: {fileID: 1970035897}
-  _btnPlay: {fileID: 1623951091}
-  _btnOptions: {fileID: 1797326057}
-  _btnExit: {fileID: 1293885179}
-  _btnBackToMenuO: {fileID: 260824129}
-  _btnBackToMenuW: {fileID: 1002169784}
-  _btnBackToMenuL: {fileID: 1925007135}
-  _btnRestartW: {fileID: 833199910}
-  _btnRestartL: {fileID: 1525270190}
-  _btnNextLevel: {fileID: 586373540}
-  _btnAdvertisement: {fileID: 1229377939}
-  "_btn\u0421omplexityLeft": {fileID: 947372638}
-  "_btn\u0421omplexityRight": {fileID: 1597994972}
-  _scoreHUD: {fileID: 967040952}
-  _scoreWin: {fileID: 1289685918}
-  _scoreLose: {fileID: 1563046190}
-  _countBall: {fileID: 552711140}
-  _complexityLabel: {fileID: 1373098250}
+  _panelMenu: {fileID: 333863334}
+  _panelOptions: {fileID: 1558713006}
+  _panelWin: {fileID: 976925542}
+  _panelLose: {fileID: 286542053}
+  _panelHUD: {fileID: 1970035901}
 --- !u!1 &1373098248
 GameObject:
   m_ObjectHideFlags: 0
@@ -3584,6 +3617,7 @@ GameObject:
   - component: {fileID: 1558713003}
   - component: {fileID: 1558713005}
   - component: {fileID: 1558713004}
+  - component: {fileID: 1558713006}
   m_Layer: 5
   m_Name: PanelOptions
   m_TagString: Untagged
@@ -3650,6 +3684,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558713002}
   m_CullTransparentMesh: 1
+--- !u!114 &1558713006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558713002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6450aabb94e2ae043985758003569769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _btnBackToMenu: {fileID: 260824129}
+  "_btn\u0421omplexityLeft": {fileID: 947372638}
+  "_btn\u0421omplexityRight": {fileID: 1597994972}
+  _complexityLabel: {fileID: 1373098250}
 --- !u!1 &1563046188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4943,6 +4993,7 @@ GameObject:
   - component: {fileID: 1970035898}
   - component: {fileID: 1970035900}
   - component: {fileID: 1970035899}
+  - component: {fileID: 1970035901}
   m_Layer: 5
   m_Name: PanelHUD
   m_TagString: Untagged
@@ -5010,3 +5061,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970035897}
   m_CullTransparentMesh: 1
+--- !u!114 &1970035901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970035897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e694d5383957d146a17e09c3c39019c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: {fileID: 967040952}
+  _countBall: {fileID: 552711140}
