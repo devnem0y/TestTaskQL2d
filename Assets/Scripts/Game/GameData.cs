@@ -45,10 +45,10 @@ public class GameData : MonoBehaviour
     private void OnStart()
     {
         _spawner.Generation();
-        _sessionState = SessionState.GAME;
         _countBall = 3;
         Dispatcher.Send(Event.ON_SET_COUNT_BALL);
         Time.timeScale = 1;
+        _sessionState = SessionState.GAME;
     }
 
     private void OnRestart()
