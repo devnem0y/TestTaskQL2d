@@ -51,6 +51,6 @@ public class PanelOptions : Widget
         _complexityLabel.text = _complexityLabels[_complexityCurrentIndex];
         Dispatcher.Send(Event.ON_COMPLEXITY_CHANGE, _complexityCurrentIndex);
         _btnСomplexityLeft.interactable = _complexityCurrentIndex != 0;
-        _btnСomplexityRight.interactable = _complexityCurrentIndex != _complexityLabels.Length;
+        _btnСomplexityRight.interactable = _complexityCurrentIndex != _complexityLabels.Length - 1;
     }
 }
